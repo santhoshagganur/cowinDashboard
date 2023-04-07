@@ -1,6 +1,8 @@
 // Write your code here
 import {Component} from 'react'
 import VaccinationCoverage from '../VaccinationCoverage'
+import VaccinationByAge from '../VaccinationByAge'
+import VaccinationByGender from '../VaccinationByGender'
 import './index.css'
 
 const apiStatusConstants = {
@@ -31,9 +33,9 @@ class CowinDashboard extends Component {
 
     if (response.ok === true) {
       const convertedData = {
-        last_7_days_vaccination: fetchedData.last_7_days_vaccination,
-        vaccination_by_age: fetchedData.vaccination_by_age,
-        vaccination_by_gender: fetchedData.vaccination_by_gender,
+        lastDaysVaccination: fetchedData.last_7_days_vaccination,
+        vaccinationByAge: fetchedData.vaccination_by_age,
+        vaccinationByGender: fetchedData.vaccination_by_gender,
       }
 
       this.setState({
@@ -45,8 +47,41 @@ class CowinDashboard extends Component {
     }
   }
 
-  render() {
+  renderSuccessView = () => {
     const {dataDetails} = this.state
+    const {
+      lastDaysVaccination,
+      vaccinationByAge,
+      vaccinationByGender,
+    } = dataDetails
+    return (
+      <>
+        <VaccinationCoverage vaccinationData={lastDaysVaccination} />
+        <VaccinationByAge vaccinationByAge={vaccinationByAge} />
+        <VaccinationByGender vaccinationByGender={vaccinationByGender} />
+      </>
+    )
+  }
+
+  renderCowinDetails = () => {
+    const {apiStatus} = this.state
+
+    switch (apiStatus) {
+      case apiStatusConstants.success:
+        return this.renderSuccessView()
+
+      case apiStatusConstants.failure:
+        return this.renderFailureView()
+
+      case apiStatusConstants.inProgress:
+        return this.renderLoaderView()
+
+      default:
+        return null
+    }
+  }
+
+  render() {
     return (
       <div className="bg-container">
         <div className="nav-bar">
@@ -58,7 +93,7 @@ class CowinDashboard extends Component {
           <h1 className="app-name"> Co-WIN </h1>
         </div>
         <h1 className="about-app"> CoWIN Vaccination in India </h1>
-        <VaccinationCoverage />
+        <div>{this.renderCowinDetails()}</div>
       </div>
     )
   }
