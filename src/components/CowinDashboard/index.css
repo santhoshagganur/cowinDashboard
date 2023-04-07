@@ -1,0 +1,32 @@
+/* Write your CSS here */
+
+.bg-container {
+  background-color: #161625;
+  height: 100vh;
+  padding: 20px;
+  padding-left: 20px;
+}
+
+.app-logo {
+  height: 40px;
+  background-size: cover;
+  margin-right: 10px;
+}
+
+.nav-bar {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.app-name {
+  color: #2cc6c6;
+  font-size: 30px;
+  font-weight: 500;
+  margin-top: 0;
+}
+
+.about-app {
+  font-size: 25px;
+  font-weight: 500;
+  color: #2cc6c6;
+}
