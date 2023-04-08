@@ -59,8 +59,8 @@ class CowinDashboard extends Component {
     return (
       <>
         <VaccinationCoverage vaccinationData={lastDaysVaccination} />
-        <VaccinationByAge vaccinationByAge={vaccinationByAge} />
         <VaccinationByGender vaccinationByGender={vaccinationByGender} />
+        <VaccinationByAge vaccinationByAge={vaccinationByAge} />
       </>
     )
   }
@@ -77,7 +77,7 @@ class CowinDashboard extends Component {
   )
 
   renderLoaderView = () => (
-    <div data-testid="loader">
+    <div testid="loader">
       <Loader type="ThreeDots" color="#ffffff" height={80} width={80} />
     </div>
   )
