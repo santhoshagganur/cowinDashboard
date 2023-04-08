@@ -26,11 +26,8 @@ class CowinDashboard extends Component {
   getDashboardData = async () => {
     this.setState({apiStatus: apiStatusConstants.inProgress})
     const url = 'https://apis.ccbp.in/covid-vaccination-data'
-    const options = {
-      method: 'GET',
-    }
 
-    const response = await fetch(url, options)
+    const response = await fetch(url)
     const fetchedData = await response.json()
 
     if (response.ok === true) {
@@ -72,12 +69,12 @@ class CowinDashboard extends Component {
         alt="failure view"
         className="failure-image"
       />
-      <p className="failure-text"> Something went wrong </p>
+      <h1 className="failure-text"> Something went wrong </h1>
     </div>
   )
 
   renderLoaderView = () => (
-    <div testid="loader">
+    <div data-testid="loader">
       <Loader type="ThreeDots" color="#ffffff" height={80} width={80} />
     </div>
   )
