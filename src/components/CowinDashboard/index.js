@@ -1,5 +1,6 @@
 // Write your code here
 import {Component} from 'react'
+import Loader from 'react-loader-spinner'
 import VaccinationCoverage from '../VaccinationCoverage'
 import VaccinationByAge from '../VaccinationByAge'
 import VaccinationByGender from '../VaccinationByGender'
@@ -23,6 +24,7 @@ class CowinDashboard extends Component {
   }
 
   getDashboardData = async () => {
+    this.setState({apiStatus: apiStatusConstants.inProgress})
     const url = 'https://apis.ccbp.in/covid-vaccination-data'
     const options = {
       method: 'GET',
@@ -71,6 +73,12 @@ class CowinDashboard extends Component {
         className="failure-image"
       />
       <p className="failure-text"> Something went wrong </p>
+    </div>
+  )
+
+  renderLoaderView = () => (
+    <div data-testid="loader">
+      <Loader type="ThreeDots" color="#ffffff" height={80} width={80} />
     </div>
   )
 

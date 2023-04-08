@@ -2,8 +2,8 @@
 
 .vaccination-coverage-container {
   background-color: #1c1c2b;
-  width: 80vw;
   padding: 20px;
+  margin-bottom: 10px;
 }
 
 .vaccination-coverage {
