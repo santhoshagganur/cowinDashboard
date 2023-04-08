@@ -11,7 +11,7 @@ import {
 import './index.css'
 
 const VaccinationCoverage = props => {
-  const {lastDaysVaccination} = props
+  const {vaccinationData} = props
 
   const DataFormatter = number => {
     if (number > 1000) {
@@ -26,7 +26,7 @@ const VaccinationCoverage = props => {
 
       <ResponsiveContainer width={1000} height={300}>
         <BarChart
-          data={lastDaysVaccination}
+          data={vaccinationData}
           margin={{
             top: 5,
           }}

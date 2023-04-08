@@ -30,3 +30,21 @@
   font-weight: 500;
   color: #2cc6c6;
 }
+
+.failure-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.failure-image {
+  height: 300px;
+  background-size: cover;
+}
+
+.failure-text {
+  color: #ffffff;
+  font-size: 25px;
+  font-weight: bold;
+}

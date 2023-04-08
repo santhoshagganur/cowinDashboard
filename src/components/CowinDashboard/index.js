@@ -63,19 +63,27 @@ class CowinDashboard extends Component {
     )
   }
 
+  renderFailureView = () => (
+    <div className="failure-container">
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/api-failure-view.png"
+        alt="failure view"
+        className="failure-image"
+      />
+      <p className="failure-text"> Something went wrong </p>
+    </div>
+  )
+
   renderCowinDetails = () => {
     const {apiStatus} = this.state
 
     switch (apiStatus) {
       case apiStatusConstants.success:
         return this.renderSuccessView()
-
       case apiStatusConstants.failure:
         return this.renderFailureView()
-
       case apiStatusConstants.inProgress:
         return this.renderLoaderView()
-
       default:
         return null
     }
